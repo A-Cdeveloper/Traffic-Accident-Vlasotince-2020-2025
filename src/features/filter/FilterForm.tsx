@@ -23,15 +23,15 @@ const FilterForm = () => {
   // Memoize maxDate to prevent recalculation on every render
   const maxDate = useMemo(() => new Date().toISOString().split('T')[0], [])
 
-  // Initial filter: 01.01.2025 to today
-  const initialStartDate = '2025-01-01'
+  // Initial filter: 01.01.2026 to today
+  const initialStartDate = '2026-01-01'
   const initialEndDate = maxDate
 
   // Compute derived state outside effect
-  const hasNoFilters = !filters.startDate && 
-                       !filters.endDate && 
-                       !filters.accidentType && 
-                       (!filters.categories || filters.categories.length === 0)
+  const hasNoFilters = !filters.startDate &&
+    !filters.endDate &&
+    !filters.accidentType &&
+    (!filters.categories || filters.categories.length === 0)
 
   // Automatically set initial filter if no filters in URL
   useEffect(() => {
@@ -68,14 +68,14 @@ const FilterForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    
-        // Validate dates
-        const dateValidation = validateDateRange(localFilters.startDate, localFilters.endDate)
+
+    // Validate dates
+    const dateValidation = validateDateRange(localFilters.startDate, localFilters.endDate)
     if (!dateValidation.isValid) {
       toast.error(dateValidation.errorMessage)
       return
     }
-    
+
     // Apply filters only on submit
     setFilters({
       startDate: localFilters.startDate || null,
@@ -93,7 +93,7 @@ const FilterForm = () => {
       accidentType: null,
       categories: null,
     })
-    
+
     // Reset local state to initial values
     setLocalFilters({
       startDate: initialStartDate,
@@ -105,7 +105,7 @@ const FilterForm = () => {
 
 
   return (
-    <form 
+    <form
       data-testid="filter-form"
       onSubmit={handleSubmit}
       onReset={handleReset}
