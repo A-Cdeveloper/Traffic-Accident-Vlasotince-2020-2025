@@ -86,7 +86,7 @@ const FilterForm = () => {
   }
 
   const handleReset = () => {
-    // Reset URL filters to initial values (2025-01-01 to today)
+    // Reset URL filters to initial values (2026-01-01 to today)
     setFilters({
       startDate: initialStartDate,
       endDate: initialEndDate,

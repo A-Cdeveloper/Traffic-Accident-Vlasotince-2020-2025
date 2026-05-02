@@ -63,7 +63,7 @@ describe('Homepage Filters', () => {
     cy.get('[data-testid="date-input-endDate"]').clear().type('2025-01-20');
     cy.get('[data-testid="filter-reset"]').click();
     
-    cy.url().should('include', 'startDate=2025-01-01');
+    cy.url().should('include', 'startDate=2026-01-01');
     cy.url().should('include', 'endDate=');
   });
 });

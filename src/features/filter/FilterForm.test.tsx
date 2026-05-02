@@ -5,7 +5,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { mockCategories, mockAccidentTypes, createQueryClientWrapper } from '@/test/test-utils'
 
 // Initial date values
-const INITIAL_START_DATE = '2025-01-01'
+const INITIAL_START_DATE = '2026-01-01'
 const INITIAL_END_DATE = '2025-12-31' // Mock end date for tests
 
 // Mock nuqs - mora biti pre importa FilterForm
