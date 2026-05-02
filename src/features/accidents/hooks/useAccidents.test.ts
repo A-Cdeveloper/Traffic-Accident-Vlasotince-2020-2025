@@ -36,8 +36,8 @@ describe('useAccidents hook', () => {
 
   it('should fetch accidents successfully with filters from URL', async () => {
     const mockFilters = {
-      startDate: '2025-01-01',
-      endDate: '2025-01-31',
+      startDate: '2026-01-01',
+      endDate: '2026-01-31',
       accidentType: 'materijalna',
       categories: ['jedno-vozilo'],
     }
@@ -72,8 +72,8 @@ describe('useAccidents hook', () => {
 
   it('should call getAccidents with filters from URL', async () => {
     const mockFilters = {
-      startDate: '2025-01-01',
-      endDate: '2025-01-31',
+      startDate: '2026-01-01',
+      endDate: '2026-01-31',
       accidentType: null,
       categories: null,
     }
@@ -100,8 +100,8 @@ describe('useAccidents hook', () => {
 
   it('should handle error when fetch fails', async () => {
     const mockFilters = {
-      startDate: '2025-01-01',
-      endDate: '2025-01-31',
+      startDate: '2026-01-01',
+      endDate: '2026-01-31',
       accidentType: null,
       categories: null,
     }
@@ -123,8 +123,8 @@ describe('useAccidents hook', () => {
 
   it('should update queryKey when filters change', async () => {
     const mockFilters1 = {
-      startDate: '2025-01-01',
-      endDate: '2025-01-31',
+      startDate: '2026-01-01',
+      endDate: '2026-01-31',
       accidentType: null,
       categories: null,
     }
@@ -150,8 +150,8 @@ describe('useAccidents hook', () => {
 
     // Change filters
     const mockFilters2 = {
-      startDate: '2025-02-01',
-      endDate: '2025-02-28',
+      startDate: '2026-02-01',
+      endDate: '2026-02-28',
       accidentType: 'materijalna',
       categories: ['jedno-vozilo'],
     }

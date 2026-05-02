@@ -11,8 +11,8 @@ describe('getAccidents', () => {
   it('should fetch accidents successfully with all parameters', async () => {
     const mockResponse: AccidentsSuccessResponse = {
       pstation: 'VLASOTINCE',
-      startDate: '2025-01-01',
-      endDate: '2025-01-31',
+      startDate: '2026-01-01',
+      endDate: '2026-01-31',
       accidentType: 'materijalna',
       categories: ['jedno-vozilo'],
       total: 2,
@@ -25,15 +25,15 @@ describe('getAccidents', () => {
     } as Response)
 
     const result = await getAccidents({
-      startDate: '2025-01-01',
-      endDate: '2025-01-31',
+      startDate: '2026-01-01',
+      endDate: '2026-01-31',
       accidentType: 'materijalna',
       categories: ['jedno-vozilo'],
     })
 
     expect(result).toEqual(mockResponse)
     expect(globalThis.fetch).toHaveBeenCalledWith(
-      expect.stringContaining('/api/accidents?pstation=VLASOTINCE&startDate=2025-01-01&endDate=2025-01-31&accidentType=materijalna&categories=jedno-vozilo')
+      expect.stringContaining('/api/accidents?pstation=VLASOTINCE&startDate=2026-01-01&endDate=2026-01-31&accidentType=materijalna&categories=jedno-vozilo')
     )
   })
 
@@ -104,7 +104,7 @@ describe('getAccidents', () => {
     await expect(
       getAccidents({
         startDate: 'invalid-date',
-        endDate: '2025-01-31',
+        endDate: '2026-01-31',
       })
     ).rejects.toThrow('Invalid date format')
   })

@@ -2,6 +2,11 @@ import type { Accident, FilterOption } from '@/types/accedents'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
 
+/** Matches FilterForm `initialStartDate` */
+export const TEST_DEFAULT_FILTER_START = '2026-01-01'
+/** Align with FilterForm `maxDate` (today UTC) so mocked URL range passes validateDateRange */
+export const TEST_DEFAULT_FILTER_END = new Date().toISOString().split('T')[0]
+
 /**
  * Mock accident data for testing
  */

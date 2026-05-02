@@ -2,17 +2,19 @@ import { QueryClient } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { mockCategories, mockAccidentTypes, createQueryClientWrapper } from '@/test/test-utils'
-
-// Initial date values
-const INITIAL_START_DATE = '2026-01-01'
-const INITIAL_END_DATE = '2025-12-31' // Mock end date for tests
+import {
+  mockCategories,
+  mockAccidentTypes,
+  createQueryClientWrapper,
+  TEST_DEFAULT_FILTER_START,
+  TEST_DEFAULT_FILTER_END,
+} from '@/test/test-utils'
 
 // Mock nuqs - mora biti pre importa FilterForm
 const mockSetFilters = vi.fn()
 vi.mock('nuqs', () => ({
   useQueryStates: vi.fn(() => [
-    { startDate: INITIAL_START_DATE, endDate: INITIAL_END_DATE, accidentType: null, categories: null },
+    { startDate: TEST_DEFAULT_FILTER_START, endDate: TEST_DEFAULT_FILTER_END, accidentType: null, categories: null },
     mockSetFilters,
   ]),
   parseAsString: vi.fn(),
@@ -164,7 +166,7 @@ describe('FilterForm', () => {
 
     await waitFor(() => {
       expect(mockSetFilters).toHaveBeenCalledWith({
-        startDate: INITIAL_START_DATE,
+        startDate: TEST_DEFAULT_FILTER_START,
         endDate: expect.any(String), // maxDate (today)
         accidentType: null,
         categories: null,

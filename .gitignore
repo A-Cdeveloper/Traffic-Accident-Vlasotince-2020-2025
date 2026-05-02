@@ -25,4 +25,9 @@ dist-ssr
 
 .env*
 coverage/
+
+# Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/tsconfig.tsbuildinfo
 react-best-practices/

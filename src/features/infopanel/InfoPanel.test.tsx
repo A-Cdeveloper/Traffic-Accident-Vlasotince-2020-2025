@@ -1,7 +1,14 @@
 import { QueryClient } from '@tanstack/react-query'
 import { render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { mockAccidents, mockCategories, mockAccidentTypes, createQueryClientWrapper } from '@/test/test-utils'
+import {
+  mockAccidents,
+  mockCategories,
+  mockAccidentTypes,
+  createQueryClientWrapper,
+  TEST_DEFAULT_FILTER_START,
+  TEST_DEFAULT_FILTER_END,
+} from '@/test/test-utils'
 import type { AccidentsSuccessResponse, MetadataResponse } from '@/types/accedents'
 
 // Mock nuqs
@@ -38,8 +45,8 @@ describe('InfoPanel', () => {
     // Setup default nuqs mock
     mockUseQueryStates.mockReturnValue([
       {
-        startDate: '2025-01-01',
-        endDate: '2025-12-31',
+        startDate: TEST_DEFAULT_FILTER_START,
+        endDate: TEST_DEFAULT_FILTER_END,
         accidentType: null,
         categories: null,
       },
@@ -48,8 +55,8 @@ describe('InfoPanel', () => {
     // Setup default useAccidents mock
     const mockAccidentsResponse: AccidentsSuccessResponse = {
       pstation: 'VLASOTINCE',
-      startDate: '2025-01-01',
-      endDate: '2025-12-31',
+      startDate: TEST_DEFAULT_FILTER_START,
+      endDate: TEST_DEFAULT_FILTER_END,
       accidentType: null,
       categories: null,
       total: mockAccidents.length,
@@ -143,8 +150,8 @@ describe('InfoPanel', () => {
   it('should display statistic section when accidentType filter is set', () => {
     mockUseQueryStates.mockReturnValue([
       {
-        startDate: '2025-01-01',
-        endDate: '2025-12-31',
+        startDate: TEST_DEFAULT_FILTER_START,
+        endDate: TEST_DEFAULT_FILTER_END,
         accidentType: 'materijalna',
         categories: null,
       },
@@ -158,8 +165,8 @@ describe('InfoPanel', () => {
   it('should display statistic section when categories filter is set', () => {
     mockUseQueryStates.mockReturnValue([
       {
-        startDate: '2025-01-01',
-        endDate: '2025-12-31',
+        startDate: TEST_DEFAULT_FILTER_START,
+        endDate: TEST_DEFAULT_FILTER_END,
         accidentType: null,
         categories: ['jedno-vozilo'],
       },
@@ -173,8 +180,8 @@ describe('InfoPanel', () => {
   it('should not display statistic sections when no filters are set', () => {
     mockUseQueryStates.mockReturnValue([
       {
-        startDate: '2025-01-01',
-        endDate: '2025-12-31',
+        startDate: TEST_DEFAULT_FILTER_START,
+        endDate: TEST_DEFAULT_FILTER_END,
         accidentType: null,
         categories: null,
       },
